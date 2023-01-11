@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="personal_info_action" model="ir.actions.act_window">
+        <field name="name">Personal Info</field>
+        <field name="res_model">personal.info.model</field>
+        <field name="view_mode">tree,form</field>
+         <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                There is no record of any Property 
+            </p>
+        </field>
+    </record>
+
+<!-- Tree view -->
+    <record id="personal_info_tree_view" model="ir.ui.view">
+        <field name="name">Personal Info</field>
+        <field name="model">personal.info.model</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="age" string="Age Section" />
+                <field name="contact_details"/>
+                <field name="total_income" />
+            </tree>
+        </field>
+    </record>
+
+<!-- Form View -->
+    <record id="personal_info_form_view" model="ir.ui.view">
+        <field name="name">Personal Info</field>
+        <field name="model">personal.info.model</field>
+        <field name="arch" type="xml">
+            <form string="Personal Info">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="age"/>
+                    </group>
+                    <group>
+                        <field name="contact_details" />
+                        <field name="total_income" />
+                    </group>
+                    <group>
+                        <field name="tax_slab_id" />
+                    </group>
+                    <notebook>
+                        <page string="Expenditure">
+                        </page>
+                        <page string="Rebate and Refunds">
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>
+

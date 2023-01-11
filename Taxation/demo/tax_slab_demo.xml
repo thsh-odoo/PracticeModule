@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="slab_1" model="tax.slab.model">
+            <field name="tax_slab_critaria">upto 2.5 Lakh(Nil)</field>
+        </record>
+
+        <record id="slab_2" model="tax.slab.model">
+            <field name="tax_slab_critaria">upto 5.0 Lakh(5%)</field>
+        </record> 
+
+        <record id="slab_3" model="tax.slab.model">
+            <field name="tax_slab_critaria">upto 7.5 Lakh(10%)</field>
+        </record>
+
+        <record id="slab_4" model="tax.slab.model">
+            <field name="tax_slab_critaria">upto 10.0 Lakh(15%)</field>
+        </record>
+
+        <record id="slab_5" model="tax.slab.model">
+            <field name="tax_slab_critaria">upto 12.50 Lakh(20%)</field>
+        </record>
+
+        <record id="slab_6" model="tax.slab.model">
+            <field name="tax_slab_critaria">upto 15.0 Lakh(25%)</field>
+        </record>
+
+        <record id="slab_7" model="tax.slab.model">
+            <field name="tax_slab_critaria"> Greater than 15 Lakh(30%)</field>
+        </record>
+    </data>
+</odoo>
