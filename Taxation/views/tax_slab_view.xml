@@ -1,0 +1,12 @@
+<odoo>
+    <!-- Tree View -->
+    <record id="tax_slab_tree_view" model="ir.ui.view">
+        <field name="name">Tax Slab</field>
+        <field name="model">tax.slab.model</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" string="Tax Slab"/>
+            </tree> 
+        </field>
+    </record>
+</odoo>

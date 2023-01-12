@@ -3,7 +3,7 @@
     <record id="personal_info_action" model="ir.actions.act_window">
         <field name="name">Personal Info</field>
         <field name="res_model">personal.info.model</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">form</field>
          <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 There is no record of any Property 
@@ -11,7 +11,7 @@
         </field>
     </record>
 
-<!-- Tree view -->
+<!-- Tree view
     <record id="personal_info_tree_view" model="ir.ui.view">
         <field name="name">Personal Info</field>
         <field name="model">personal.info.model</field>
@@ -23,7 +23,7 @@
                 <field name="total_income" />
             </tree>
         </field>
-    </record>
+    </record> -->
 
 <!-- Form View -->
     <record id="personal_info_form_view" model="ir.ui.view">
@@ -41,7 +41,7 @@
                         <field name="total_income" />
                     </group>
                     <group>
-                        <field name="tax_slab_id" />
+                        <field name="tax_slab_id"/>
                     </group>
                     <notebook>
                         <page string="Expenditure">

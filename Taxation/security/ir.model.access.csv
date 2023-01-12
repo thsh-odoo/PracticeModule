@@ -1,2 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-Taxation_admin,Admin User,model_personal_info_model,,1,1,1,1
+Taxation_Personalinfo_admin,Admin User,model_personal_info_model,,1,1,1,1
+Taxation_Taxslab_admin,Admin User,model_tax_slab_model,,1,1,1,1

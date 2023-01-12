@@ -3,6 +3,9 @@
     <menuitem id="taxation_root_menu" name="Taxation">
         <menuitem id="taxation_lev1_menu" name="Info">
             <menuitem id="taxation_lev2_menu" action="personal_info_action" name="Personal Info" />
-        </menuitem>       
+        </menuitem>     
+        <menuitem id="taxation_settings_menu" name="Settings">
+            <menuitem id="taxation_expenditure_menu" name="Expenditure" />
+        </menuitem>  
     </menuitem>
 </odoo>

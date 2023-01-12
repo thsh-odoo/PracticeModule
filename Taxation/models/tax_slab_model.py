@@ -5,6 +5,5 @@ class Tax_Slab_Model(models.Model):
     _name='tax.slab.model'
     _description='tax slabs'
     
-    tax_slab_critaria=fields.Char()
+    name=fields.Char(required=True,readonly=True)
   
-
