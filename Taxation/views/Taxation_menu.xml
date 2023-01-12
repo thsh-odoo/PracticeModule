@@ -5,7 +5,7 @@
             <menuitem id="taxation_lev2_menu" action="personal_info_action" name="Personal Info" />
         </menuitem>     
         <menuitem id="taxation_settings_menu" name="Settings">
-            <menuitem id="taxation_expenditure_menu" name="Expenditure" />
+            <menuitem id="taxation_expenditure_menu" action="expenditure_action" name="Expenditure" />
         </menuitem>  
     </menuitem>
 </odoo>

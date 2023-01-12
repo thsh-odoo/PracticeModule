@@ -10,6 +10,7 @@
         'security/ir.model.access.csv',
         'views/Personal_info_view.xml',
         'views/tax_slab_view.xml',
+        'views/expenditure_view.xml',
         'views/Taxation_menu.xml'
         ],
     'demo' : [ 

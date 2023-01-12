@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="expenditure_action" model="ir.actions.act_window">
+        <field name="name">Expenditure</field>
+        <field name="res_model">expenditure.model</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No Record of expenditure
+            </p>
+        </field>
+    </record>
+    <!-- Tree View -->
+    <record id="expenditure_tree_view" model="ir.ui.view">
+        <field name="name">Expenditure</field>
+        <field name="model">expenditure.model</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="expense_name"/>
+                <field name="date"/>
+                <field name="cost"/>
+            </tree>
+        </field>
+    </record>
+    <!-- Form View -->
+    <record id="expenditure_form_view" model="ir.ui.view">
+        <field name="name">Expenditure</field>
+        <field name="model">expenditure.model</field>
+        <field name="arch" type="xml">
+            <form string="Expenditure">
+                <sheet>
+                    <group>
+                        <field name="expense_name"/>
+                        <field name="date" />
+                        <field name="cost" />
+                    </group>    
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

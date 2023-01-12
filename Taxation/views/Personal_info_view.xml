@@ -33,18 +33,26 @@
             <form string="Personal Info">
                 <sheet>
                     <group>
-                        <field name="name"/>
-                        <field name="age"/>
+                        <group>
+                            <field name="name"/>
+                            <field name="age"/>
+                        </group>
+                        <group>
+                            <field name="contact_details" />
+                            <field name="total_income" />
+                        </group>
                     </group>
                     <group>
-                        <field name="contact_details" />
-                        <field name="total_income" />
-                    </group>
-                    <group>
-                        <field name="tax_slab_id"/>
+                        <group>
+                            <field name="tax_slab_id"/>
+                        </group>
+                        <group>
+                            <field name="income_tax"/>
+                        </group>
                     </group>
                     <notebook>
                         <page string="Expenditure">
+                            <field name="expense_ids"/>
                         </page>
                         <page string="Rebate and Refunds">
                         </page>
