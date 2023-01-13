@@ -55,6 +55,7 @@
                             <field name="expense_ids"/>
                         </page>
                         <page string="Rebate and Refunds">
+                            <field name="rebate_ids"/>
                         </page>
                     </notebook>
                 </sheet>

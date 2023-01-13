@@ -11,6 +11,7 @@
         'views/Personal_info_view.xml',
         'views/tax_slab_view.xml',
         'views/expenditure_view.xml',
+        'views/simple_rebate_view.xml',
         'views/Taxation_menu.xml'
         ],
     'demo' : [ 

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--Tree View -->
+    <record id="simple_rebate_tree_view" model="ir.ui.view">    
+        <field name="name">Tax Rabate</field>
+        <field name="model">simple.rebate.model</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="rebate_section_name"/>
+                <field name="amount"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="simple_rebate_form_view" model="ir.ui.view">
+        <field name="name">Tax Rebate</field>
+        <field name="model">simple.rebate.model</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="rebate_section_name"/>
+                        <field name="amount"/>        
+                    </group>
+                </sheet>    
+            </form>
+        </field>
+    </record>
+</odoo>
