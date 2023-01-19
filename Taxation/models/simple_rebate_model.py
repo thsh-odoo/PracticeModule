@@ -36,4 +36,6 @@ class Simple_Rebate_Model(models.Model):
             elif record.rebate_section_name=="80u" and record.amount>125000:
                 raise ve("Maximum rebate in this section is 125000")
 
+    
+
             

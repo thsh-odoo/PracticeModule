@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="personal_info_action" model="ir.actions.act_window">
-        <field name="name">Personal Info</field>
-        <field name="res_model">personal.info.model</field>
-        <field name="view_mode">form</field>
-         <field name="help" type="html">
-            <p class="o_view_nocontent_smiling_face">
-                There is no record of any Property 
-            </p>
-        </field>
-    </record>
 
-<!-- Tree view
+<!--  Tree view -->
     <record id="personal_info_tree_view" model="ir.ui.view">
         <field name="name">Personal Info</field>
         <field name="model">personal.info.model</field>
@@ -23,7 +13,7 @@
                 <field name="total_income" />
             </tree>
         </field>
-    </record> -->
+    </record> 
 
 <!-- Form View -->
     <record id="personal_info_form_view" model="ir.ui.view">
@@ -57,10 +47,157 @@
                         <page string="Rebate and Refunds">
                             <field name="rebate_ids"/>
                         </page>
+                        <page string="Tax Regim Info">
+                            <div>
+                                <h1>New Regim 2023-2024</h1>
+                                <table class="table table-bordered table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th>Income</th>
+                                            <th>Percentage</th>
+                                        </tr>
+                                        <tr>
+                                            <td>Upto 2.5 Lakh</td>
+                                            <td>Nil</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2.5 to 5.0 Lakh</td>
+                                            <td>5%</td>
+                                        </tr>
+                                        <tr>
+                                            <td>5.0 to 7.5 Lakh</td>
+                                            <td>10%</td>
+                                        </tr>
+                                        <tr>
+                                            <td>7.5 to 10.0 Lakh</td>
+                                            <td>15%</td>
+                                        </tr>
+                                        <tr>
+                                            <td>10.0 to 12.5 Lakh</td>
+                                            <td>20%</td>
+                                        </tr>
+                                        <tr>
+                                            <td>12.5 to 15.0 Lakh</td>
+                                            <td>25%</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Greater than 15.0 Lakh</td>
+                                            <td>30%</td>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                            <div>
+                                <h1>Old Regim 2022-2023</h1>
+                                <table class="table table-bordered table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th>Income</th>
+                                            <th>Percentage</th>
+                                        </tr>
+                                        <tr>
+                                            <td>Upto 2.5 Lakh</td>
+                                            <td>Nil</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2.5 to 5.0 Lakh</td>
+                                            <td>5%</td>
+                                        </tr>
+                                        <tr>
+                                            <td>5.0 to 10.0  Lakh</td>
+                                            <td>20%</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Greater than 10.0 Lakh</td>
+                                            <td>30%</td>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                            <div>
+                                <h1>Old Regim 2022-2023 For Senior Citizen</h1>
+                                <table class="table table-bordered table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th>Income</th>
+                                            <th>Percentage</th>
+                                        </tr>
+                                        <tr>
+                                            <td>Upto 3.0 Lakh</td>
+                                            <td>Nil</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3.0 to 5.0 Lakh</td>
+                                            <td>5%</td>
+                                        </tr>
+                                        <tr>
+                                            <td>5.0 to 10.0  Lakh</td>
+                                            <td>20%</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Greater than 10.0 Lakh</td>
+                                            <td>30%</td>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                            <h3>Note : in new Regim there is no difference in taxes of Adult and Senior Citizen</h3>
+                        </page> 
+                        <page string="Tax Rebate Info">
+                            <div>
+                                <table class="table table-bordered table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th>Section</th>
+                                            <th>Info</th>
+                                        </tr>
+                                        <tr>
+                                            <td>80C</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>80G</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>80GGC</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>80GG</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>80E</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>80EE</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>80D</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>80DD</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>80DDB</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>80U</td>
+                                            <td></td>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </page>
                     </notebook>
                 </sheet>
             </form>
         </field>
     </record>
 </odoo>
-

@@ -1,26 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-        <record model="tax.slab.model" id="tax_slab_1">
-            <field name="name">0 to 2.5 lakh (Nil)</field>
+
+        <record model="tax.slab.model" id="old_regim">
+            <field name="name">Old</field>
         </record>
-         <record model="tax.slab.model" id="tax_slab_2">
-            <field name="name">2.5 to 5 lakh (5%)</field>
+    
+        <record model="tax.slab.model" id="new_regim">
+            <field name="name">New</field>
         </record>
-         <record model="tax.slab.model" id="tax_slab_3">
-            <field name="name">5 to 7.5 lakh (10%)</field>
-        </record>
-         <record model="tax.slab.model" id="tax_slab_4">
-            <field name="name">7.5 to 10.0 lakh (15%)</field>
-        </record>
-         <record model="tax.slab.model" id="tax_slab_5">
-            <field name="name">10.0 to 12.50 lakh (20%)</field>
-        </record>
-         <record model="tax.slab.model" id="tax_slab_6">
-            <field name="name">12.50 to 15.0 lakh (25%)</field>
-        </record>
-         <record model="tax.slab.model" id="tax_slab_7">
-            <field name="name"> >15.0 lakh (30%)</field>
-        </record>
+        
     </data>
 </odoo>

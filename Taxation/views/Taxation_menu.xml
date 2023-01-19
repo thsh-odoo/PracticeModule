@@ -1,6 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <menuitem id="taxation_root_menu" name="Taxation">
+
+<!-- Personal Info Action -->
+    <record id="personal_info_action" model="ir.actions.act_window">
+        <field name="name">Personal Info</field>
+        <field name="res_model">personal.info.model</field>
+        <field name="view_mode">tree,form</field>
+         <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                There is no record of any Property 
+            </p>
+        </field>
+    </record>
+
+<!-- Expenditure Action -->
+<record id="expenditure_action" model="ir.actions.act_window">
+    <field name="name">Expenditure</field>
+    <field name="res_model">expenditure.model</field>
+    <field name="view_mode">tree,form</field>
+    <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+            No Record of expenditure
+        </p>
+    </field>
+</record>
+
+<!-- Menus -->
+    <menuitem id="taxation_root_menu" name="Taxation" web_icon="Taxation,static/description/icon.png">
         <menuitem id="taxation_lev1_menu" name="Info">
             <menuitem id="taxation_lev2_menu" action="personal_info_action" name="Personal Info" />
         </menuitem>     
@@ -9,3 +35,14 @@
         </menuitem>  
     </menuitem>
 </odoo>
+
+
+
+
+
+
+
+
+
+
+

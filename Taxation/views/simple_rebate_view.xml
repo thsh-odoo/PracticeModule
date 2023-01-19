@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!--Tree View -->
+    <!-- Tree View -->
     <record id="simple_rebate_tree_view" model="ir.ui.view">    
         <field name="name">Tax Rabate</field>
         <field name="model">simple.rebate.model</field>
         <field name="arch" type="xml">
-            <tree>
+            <tree decoration-success="'amount' >= 0">
                 <field name="rebate_section_name"/>
                 <field name="amount"/>
             </tree>

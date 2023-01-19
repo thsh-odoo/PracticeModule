@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <!-- Tree View -->
     <record id="tax_slab_tree_view" model="ir.ui.view">
@@ -8,5 +9,19 @@
                 <field name="name" string="Tax Slab"/>
             </tree> 
         </field>
+    </record>
+    <!-- Form View -->
+    <record id="tax_slab_form_view" model="ir.ui.view">
+        <field name="name">Tax Slab</field>
+        <field name="model">tax.slab.model</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name" string="Regim"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>   
     </record>
 </odoo>
