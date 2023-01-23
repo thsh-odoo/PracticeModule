@@ -35,7 +35,42 @@ class Simple_Rebate_Model(models.Model):
             
             elif record.rebate_section_name=="80u" and record.amount>125000:
                 raise ve("Maximum rebate in this section is 125000")
+            
+    
+    # @api.model
+    # def create(self, vals):
+    #     # property_id = self.env['personal.info.model'].browse(vals['personal_info_id']
+    #         print('*************88')
+    #         domain=[rebate_section_name,'=',vals['rebate_section_name']]
+    #         result= self.env['simple.rebate.model'].search([domain])
+    #         print(result)
+    # #         # if result  == ['rebate_section_name']:
+    #             #     return result
+    #             # else:
+    #             #  return False                      
+    # #         return super().create(vals)      
+    # #     # print(vals['rebate_section_name'])s
+    #     # property_id = self.env['personal.info.model'].browse(values['personal_info_id'])
+    #    # printt('------------------------------------')
+    #     # print(property_id.read())
 
+    #     # print("--------------------------------")
+    #     # print([property_id.rebate_ids.rebate_section_name.read()])
+    #     # if values['rebate_section_name'] == property_id.rebate_ids.rebate_section_name: 
+    #     #     raise UserError("Nai chale bhai aavu")
+        
+        
+    #     # print(values['property_id'])
+        
+        # property_id.state = 'offer_received'
     
 
-            
+    @api.model
+    def create(self, values):
+        property_id = self.env['personal.info.model'].browse(values['personal_info_id'])  
+        print('------------------------------------')
+        section_list=property_id.mapped('rebate_ids.rebate_section_name')             
+        if  values['rebate_section_name'] in section_list:
+             raise ve("Rebate Section is Already Selected")
+        return super().create(values)         
+      

@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 from odoo import fields,models,api
+import numpy as np
 class personal_info(models.Model):
 
     _name="personal.info.model"
     _description="personal information and "
-
+    
     name=fields.Char(required=True,default="unknown")
     age=fields.Selection(
         string='Age Group',
@@ -22,12 +23,12 @@ class personal_info(models.Model):
     def _income_tax(self):
         for record in self:
             tax=0
-            if record.tax_slab_id.name=='new':   
+            if record.tax_slab_id.name=='New':   
                 if record.total_income >= 0 and record.total_income <= 250000:
                     record.income_tax=0
 
                 else:
-                    deduction=sum(record.rebate_ids.mapped("amount"))+sum(record.expense_ids.mapped('cost'))
+                    deduction=sum(record.rebate_ids.mapped("amount"),sum(record.expense_ids.mapped('cost')))
                     Taxable_amount=record.total_income-deduction
                     
                     if Taxable_amount >250000 and Taxable_amount<=500000:
@@ -82,23 +83,8 @@ class personal_info(models.Model):
 
         record.income_tax=(tax+tax*0.04)
 
-
-
-                
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
+    # @api.constrains("rebate_ids")
+    # def _unique_tax_rebate(self):
+    #     for record in self:
+    #         print(record.rebate_ids.amount)
+    #         print(record.rebate_ids.mapped('rebate_section_name'))

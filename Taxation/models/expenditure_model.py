@@ -18,12 +18,6 @@ class Expenditure_Model(models.Model):
     @api.constrains("date")
     def _check_year(self):
         for record in self:
-            year=record.date
-            today_year=date.today().year()
-
-            time=today_year - year
-            sec=time.total_seconds()
-            int_time=sec//1000000
-            if int_time < 0 or int_time >365 :
-                raise ValidationError("Please enter the valid date")    
+            if record.date > date.today():
+                raise ValidationError("Date is not Acceptable")
             

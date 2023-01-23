@@ -5,7 +5,7 @@
         <field name="name">Tax Rabate</field>
         <field name="model">simple.rebate.model</field>
         <field name="arch" type="xml">
-            <tree decoration-success="'amount' >= 0">
+            <tree decoration-success="'amount' >= 0" editable="bottom">
                 <field name="rebate_section_name"/>
                 <field name="amount"/>
             </tree>

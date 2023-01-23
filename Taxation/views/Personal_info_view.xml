@@ -41,11 +41,11 @@
                         </group>
                     </group>
                     <notebook>
-                        <page string="Expenditure">
-                            <field name="expense_ids"/>
-                        </page>
                         <page string="Rebate and Refunds">
                             <field name="rebate_ids"/>
+                        </page>
+                        <page string="Expenditure">
+                            <field name="expense_ids"/>
                         </page>
                         <page string="Tax Regim Info">
                             <div>
