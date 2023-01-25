@@ -6,6 +6,9 @@ class Expenditure_Model(models.Model):
     _name="expenditure.model"
     _description="All your Expenses"
 
+# ------------------------------------------------------------------
+# Fields in our Model
+# ------------------------------------------------------------------
     expense_name=fields.Char(required=True)
     date=fields.Date(required=True)
     cost=fields.Float(required=True)
@@ -14,7 +17,9 @@ class Expenditure_Model(models.Model):
         ('check_cost','CHECK(cost>0)','Cost cannot be negative')
     ]
 
-
+# ------------------------------------------------------------------
+# Python Constrains to check our data
+# ------------------------------------------------------------------
     @api.constrains("date")
     def _check_year(self):
         for record in self:

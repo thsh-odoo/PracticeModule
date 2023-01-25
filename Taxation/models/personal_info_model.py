@@ -1,24 +1,31 @@
 # -*- coding: utf-8 -*-
 from odoo import fields,models,api
-import numpy as np
+from odoo.exceptions import ValidationError
 class personal_info(models.Model):
 
     _name="personal.info.model"
     _description="personal information and "
-    
+    _inherit = ['mail.thread', 'mail.activity.mixin']
+# ------------------------------------------------------------------
+# Fields in our Model
+# ------------------------------------------------------------------   
     name=fields.Char(required=True,default="unknown")
     age=fields.Selection(
         string='Age Group',
-        selection=[('adult','Adult(18-59)'),('seniorcitizen','Senior Citizen( age>=60)')]
+        selection=[('adult','Adult(18-59)'),('seniorcitizen','Senior Citizen( age>=60)')
+        ],
+        required=True
     )
-    contact_details=fields.Integer()
+    contact_details=fields.Char(required=True)
     total_income=fields.Float(required=True)
-    tax_slab_id=fields.Many2one("tax.slab.model")
+    tax_slab_id=fields.Many2one("tax.slab.model",required=True)
     expense_ids=fields.One2many("expenditure.model","info_id")
-    income_tax=fields.Float(readonly=True,compute="_income_tax")
+    income_tax=fields.Float(readonly=True,compute="_income_tax",default=0.0)
     rebate_ids=fields.One2many("simple.rebate.model","personal_info_id")
 
-
+# ------------------------------------------------------------------
+# Compute Method to calculate our Income Tax
+# ------------------------------------------------------------------
     @api.depends("expense_ids.cost","total_income","rebate_ids.amount")
     def _income_tax(self):
         for record in self:
@@ -80,11 +87,29 @@ class personal_info(models.Model):
                         
                         elif Taxable_amount>1000000:
                             tax=110000+((Taxable_amount-1000000)*0.3)
+            
+            if Taxable_amount < 5000000:
+                record.income_tax=(tax+tax*0.04)
 
-        record.income_tax=(tax+tax*0.04)
+            elif Taxable_amount >=5000000 and Taxable_amount < 10000000:
+                record.income_tax=(tax+tax*0.10)
+            
+            elif Taxable_amount >=10000000 and Taxable_amount < 20000000:
+                record.income_tax=(tax+tax*0.15)
+            
+            elif Taxable_amount >=20000000 and Taxable_amount < 50000000:
+                record.income_tax=(tax+tax*0.25)
+            
+            elif Taxable_amount >=50000000:
+                record.income_tax=(tax+tax*0.37)
 
-    # @api.constrains("rebate_ids")
-    # def _unique_tax_rebate(self):
-    #     for record in self:
-    #         print(record.rebate_ids.amount)
-    #         print(record.rebate_ids.mapped('rebate_section_name'))
+# ------------------------------------------------------------------
+# Python Constraint to validate our contact details field
+# ------------------------------------------------------------------
+    @api.constrains("contact_details")
+    def _check_contact(self):
+        for record in self:
+            length=len(record.contact_details)
+            
+            if length > 10 or record.contact_details.isnumeric() == False:
+                raise ValidationError("Invalid Contact Details")

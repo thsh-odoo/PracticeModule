@@ -7,6 +7,8 @@
         <field name="arch" type="xml">
             <tree decoration-success="'amount' >= 0" editable="bottom">
                 <field name="rebate_section_name"/>
+                <field name="disablity_level" attrs="{'invisible' : [('rebate_section_name' ,'!=','80dd')]}"/>
+                <field name="document"/>
                 <field name="amount"/>
             </tree>
         </field>
@@ -21,6 +23,7 @@
                 <sheet>
                     <group>
                         <field name="rebate_section_name"/>
+                        <field name="disablity_level" attrs="{'invisible' : [('rebate_section_name' ,'!=','80dd')]}"/>
                         <field name="amount"/>        
                     </group>
                 </sheet>    

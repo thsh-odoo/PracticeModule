@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="personal.info.model" id="personal_info_data1">
+        <field name="name">Shaan Thakkar</field>
+        <field name="age">adult</field>
+        <field name="total_income">5000000</field>
+        <field name="tax_slab_id" ref="new_regim"></field>
+        <field name="contact_details">9979002050</field>
+    </record>
+
+    <record model="personal.info.model" id="personal_info_data2">
+        <field name="name">Dhrutik Patel</field>
+        <field name="age">adult</field>
+        <field name="total_income">2500000</field>
+        <field name="tax_slab_id" ref="new_regim"></field>
+        <field name="contact_details">0987654321</field>
+    </record>
+
+    <record model="personal.info.model" id="personal_info_data3">
+        <field name="name">Saurabh Mishra</field>
+        <field name="age">seniorcitizen</field>
+        <field name="total_income">500000</field>
+        <field name="tax_slab_id" ref="new_regim"></field>
+        <field name="contact_details">1234567890</field>
+    </record>
+
+    <record model="personal.info.model" id="personal_info_data4">
+        <field name="name">Mohit Beniwal</field>
+        <field name="age">adult</field>
+        <field name="total_income">1200000</field>
+        <field name="tax_slab_id" ref="old_regim"></field>
+        <field name="contact_details">9135602320</field>
+    </record>
+
+    <record model="personal.info.model" id="personal_info_data5">
+        <field name="name">Tejas Modi</field>
+        <field name="age">seniorcitizen</field>
+        <field name="total_income">800000</field>
+        <field name="tax_slab_id" ref="new_regim"></field>
+        <field name="contact_details">9372302452</field>
+    </record>
+
+    <record model="personal.info.model" id="personal_info_data6">
+        <field name="name">Gurupreet Singh</field>
+        <field name="age">seniorcitizen</field>
+        <field name="total_income">1800000</field>
+        <field name="tax_slab_id" ref="old_regim"></field>
+        <field name="contact_details">9988776655</field>
+    </record>
+
+    <record model="personal.info.model" id="personal_info_data7">
+        <field name="name">Harsh Modi</field>
+        <field name="age">adult</field>
+        <field name="total_income">2000000</field>
+        <field name="tax_slab_id" ref="old_regim"></field>
+        <field name="contact_details">1122334455</field>
+    </record>
+</odoo>

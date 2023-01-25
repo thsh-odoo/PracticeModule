@@ -22,6 +22,11 @@
         <field name="arch" type="xml">
             <form string="Personal Info">
                 <sheet>
+                    <div>
+                        <t t-foreach="[1,2,3,4,5]" t-as="i">
+                            <p><t t-out="i"/></p>                            
+                        </t>
+                    </div>
                     <group>
                         <group>
                             <field name="name"/>
@@ -29,20 +34,16 @@
                         </group>
                         <group>
                             <field name="contact_details" />
-                            <field name="total_income" />
+                            <field name="tax_slab_id" string="Tax Slab Regim" options="{'no_create': True, 'no_open': True}"/>
                         </group>
                     </group>
                     <group>
-                        <group>
-                            <field name="tax_slab_id"/>
-                        </group>
-                        <group>
-                            <field name="income_tax"/>
-                        </group>
+                        <field name="total_income" />
                     </group>
                     <notebook>
                         <page string="Rebate and Refunds">
                             <field name="rebate_ids"/>
+                            
                         </page>
                         <page string="Expenditure">
                             <field name="expense_ids"/>
@@ -196,7 +197,19 @@
                             </div>
                         </page>
                     </notebook>
+                    <group>
+                        <group>
+                            <label for="income_tax" name="Total Tax"/>
+                            <h3><field name="income_tax"/></h3>
+                            <!-- <button name="_reminder" string="Reminder for payment" type="object" /> -->
+                        </group>
+                    </group>
                 </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" />
+                    <field name="message_ids" />
+                    <field name="activity_ids" />
+               </div>
             </form>
         </field>
     </record>
