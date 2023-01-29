@@ -17,10 +17,21 @@ class personal_info(models.Model):
         required=True
     )
     contact_details=fields.Char(required=True)
-    total_income=fields.Float(required=True)
+    total_income=fields.Monetary(required=True)
+    currency_id = fields.Many2one(comodel_name='res.currency')
     tax_slab_id=fields.Many2one("tax.slab.model",required=True)
     expense_ids=fields.One2many("expenditure.model","info_id")
-    income_tax=fields.Float(readonly=True,compute="_income_tax",default=0.0)
+    
+    company_id = fields.Many2one('res.company', store=True, copy=False,
+                                string="Company",
+                                default=lambda self: self.env.user.company_id.id)
+
+    currency_id = fields.Many2one('res.currency', string="Currency",
+                                 related='company_id.currency_id',
+                                 default=lambda
+                                 self: self.env.user.company_id.currency_id.id)
+    
+    income_tax=fields.Monetary(readonly=True,compute="_income_tax")
     rebate_ids=fields.One2many("simple.rebate.model","personal_info_id")
 
 # ------------------------------------------------------------------
@@ -30,7 +41,7 @@ class personal_info(models.Model):
     def _income_tax(self):
         for record in self:
             tax=0
-            if record.tax_slab_id.name=='New':   
+            if record.tax_slab_id.name=='New':             # Income Tax Calculation According to New regim
                 if record.total_income >= 0 and record.total_income <= 250000:
                     record.income_tax=0
 
@@ -56,7 +67,7 @@ class personal_info(models.Model):
                     elif Taxable_amount>1500000:
                         tax=187500+((Taxable_amount-1500000)*0.3)
 
-            elif record.tax_slab_id.name=="Old":
+            elif record.tax_slab_id.name=="Old":                 # Income Tax Calulation According to old Regim
                 if record.age=='adult':
                     if record.total_income >= 0  and record.total_income <=250000 :
                         record.income_tax=0
@@ -87,21 +98,21 @@ class personal_info(models.Model):
                         
                         elif Taxable_amount>1000000:
                             tax=110000+((Taxable_amount-1000000)*0.3)
-            
-            if Taxable_amount < 5000000:
-                record.income_tax=(tax+tax*0.04)
+                
+            print("------------------------",tax)    
+            if Taxable_amount >= 5000000 and Taxable_amount <= 10000000:            #Surcharge Calculation 
+                tax=tax+(tax*0.10)    
+                
+            elif Taxable_amount >10000000 and Taxable_amount <= 20000000:
+                tax=tax+(tax*0.15)
 
-            elif Taxable_amount >=5000000 and Taxable_amount < 10000000:
-                record.income_tax=(tax+tax*0.10)
+            elif Taxable_amount > 20000000 and Taxable_amount <= 50000000:
+                tax=tax+(tax*0.25)
+
+            elif Taxable_amount > 50000000 : #and Taxable_amount <= 50000000:
+                tax=tax+(tax*0.37)
             
-            elif Taxable_amount >=10000000 and Taxable_amount < 20000000:
-                record.income_tax=(tax+tax*0.15)
-            
-            elif Taxable_amount >=20000000 and Taxable_amount < 50000000:
-                record.income_tax=(tax+tax*0.25)
-            
-            elif Taxable_amount >=50000000:
-                record.income_tax=(tax+tax*0.37)
+            record.income_tax=(tax+tax*0.04)             #Health And Educational Cess
 
 # ------------------------------------------------------------------
 # Python Constraint to validate our contact details field
