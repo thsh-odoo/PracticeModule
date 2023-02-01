@@ -20,13 +20,15 @@ class Simple_Rebate_Model(models.Model):
     document=fields.Binary()
     personal_info_id=fields.Many2one("personal.info.model")
 
-
 # ------------------------------------------------------------------
 # Constraint on amount field for our rebate sections
 # ------------------------------------------------------------------
     @api.constrains("amount")
     def check_amount(self):
         for record in self:
+            if record.amount <= 0 :
+                raise ve("Rebate amount cannot be negative or zero")
+                
             if record.rebate_section_name=="80c" and record.amount>150000:
                 raise ve("Maximum rebate in this section is 150000")     
 
@@ -60,7 +62,8 @@ class Simple_Rebate_Model(models.Model):
     @api.model
     def create(self, values):
         rebate_id = self.env['personal.info.model'].browse(values['personal_info_id'])  
-        print('------------------------------------')
+        rebate_id.state='crebate_details'
+        # print('------------------------------------')
         section_list=rebate_id.mapped('rebate_ids.rebate_section_name')             
         if  values['rebate_section_name'] in section_list:
              raise ve("Rebate Section is Already Selected")                   # ve is our ValidationError

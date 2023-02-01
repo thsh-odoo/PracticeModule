@@ -18,6 +18,17 @@ class Expenditure_Model(models.Model):
     ]
 
 # ------------------------------------------------------------------
+# CRUD Method
+# ------------------------------------------------------------------
+    @api.model
+    def create(self, values):
+        rebate_id = self.env['personal.info.model'].browse(values['info_id'])  
+        rebate_id.state='bexpenditure_details'
+        
+        return super().create(values)
+
+
+# ------------------------------------------------------------------
 # Python Constrains to check our data
 # ------------------------------------------------------------------
     @api.constrains("date")

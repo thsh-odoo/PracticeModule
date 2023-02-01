@@ -12,28 +12,21 @@ class personal_info(models.Model):
     name=fields.Char(required=True,default="unknown")
     age=fields.Selection(
         string='Age Group',
-        selection=[('adult','Adult(18-59)'),('seniorcitizen','Senior Citizen( age>=60)')
-        ],
+        selection=[('adult','Adult(18-59)'),('seniorcitizen','Senior Citizen( age>=60)')],
         required=True
     )
     contact_details=fields.Char(required=True)
-    total_income=fields.Monetary(required=True)
-    currency_id = fields.Many2one(comodel_name='res.currency')
+    total_income=fields.Float(required=True)
     tax_slab_id=fields.Many2one("tax.slab.model",required=True)
-    expense_ids=fields.One2many("expenditure.model","info_id")
-    
-    company_id = fields.Many2one('res.company', store=True, copy=False,
-                                string="Company",
-                                default=lambda self: self.env.user.company_id.id)
-
-    currency_id = fields.Many2one('res.currency', string="Currency",
-                                 related='company_id.currency_id',
-                                 default=lambda
-                                 self: self.env.user.company_id.currency_id.id)
-    
-    income_tax=fields.Monetary(readonly=True,compute="_income_tax")
+    expense_ids=fields.One2many("expenditure.model","info_id") 
+    income_tax=fields.Float(readonly=True,compute="_income_tax")
     rebate_ids=fields.One2many("simple.rebate.model","personal_info_id")
-
+    
+    state=fields.Selection(
+        string="Stages",
+        selection=[('aincome_details','Income Details Process'),('bexpenditure_details','Expenditure Details in Process'),('crebate_details','Rebate Details in Process'),('done','Income Tax Return Filed'),('e_blocked','Blocked')],
+        tracking=True
+    )
 # ------------------------------------------------------------------
 # Compute Method to calculate our Income Tax
 # ------------------------------------------------------------------
@@ -99,7 +92,7 @@ class personal_info(models.Model):
                         elif Taxable_amount>1000000:
                             tax=110000+((Taxable_amount-1000000)*0.3)
                 
-            print("------------------------",tax)    
+            # print("------------------------",tax)    
             if Taxable_amount >= 5000000 and Taxable_amount <= 10000000:            #Surcharge Calculation 
                 tax=tax+(tax*0.10)    
                 
@@ -124,3 +117,10 @@ class personal_info(models.Model):
             
             if length > 10 or record.contact_details.isnumeric() == False:
                 raise ValidationError("Invalid Contact Details")
+
+# ------------------------------------------------------------------
+# Header Button
+# ------------------------------------------------------------------
+    def Done(self):
+        for record in self:
+            record.state='done'

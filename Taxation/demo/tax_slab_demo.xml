@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-
         <record model="tax.slab.model" id="old_regim">
             <field name="name">Old</field>
         </record>
     
         <record model="tax.slab.model" id="new_regim">
             <field name="name">New</field>
-        </record>
-        
+        </record> 
     </data>
 </odoo>

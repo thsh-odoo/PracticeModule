@@ -10,10 +10,42 @@
                 <field name="name"/>
                 <field name="age" string="Age Section" />
                 <field name="contact_details"/>
-                <field name="total_income" />
+                <field name="total_income"/>
             </tree>
         </field>
     </record> 
+
+<!-- Kanban View -->
+    <record id="personal_info_kanban_view" model="ir.ui.view">
+        <field name="name">Personal Info</field>
+        <field name="model">personal.info.model</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="state" record_draggable="False">
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <strong>
+                                <h2><field name="name"/></h2>
+                            </strong>
+                            <div>
+    
+                                <label for="total_income">Total Income : </label>
+                                <field name="total_income"/>
+                            </div>
+                            <div>
+                                <label for="age">Age Group : </label>
+                                <field name="age"/>
+                            </div>
+                            <div>
+                                <label for="contact_details">Contact Details : </label>
+                                <field name="contact_details"/>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
 
 <!-- Form View -->
     <record id="personal_info_form_view" model="ir.ui.view">
@@ -21,6 +53,10 @@
         <field name="model">personal.info.model</field>
         <field name="arch" type="xml">
             <form string="Personal Info">
+                <header>
+                    <button name="Done" type="object" string="Done" states="aincome_details,bexpenditure_details,crebate_details,e_blocked"/>
+                    <field  name="state" widget="statusbar" options="{'clickable' : 1}"  />
+                </header>
                 <sheet>
                     <group>
                         <group>
@@ -195,6 +231,7 @@
                     <group>
                         <group>
                             <label for="income_tax" name="Total Tax"/>
+
                             <h3><field name="income_tax"/></h3>
                         </group>
                     </group>
